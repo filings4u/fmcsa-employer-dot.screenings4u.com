@@ -396,7 +396,7 @@ async function init(){
     if(cache){if(cache.branding)applyBranding(cache.branding,ctx);else applyPlatformBranding(ctx);setBrandLogo(cache.branding?.logo_path||'/assets/img/logo.png',cache.branding?.portal_name||ctx?.subscription?.plan_name||C.label);document.body.classList.remove('loading')}
     const renderPromise=render(ctx);
     const brandPromise=loadBranding(ctx,startingMid===ctx.membership?.id?prefetchedBrand:null);
-    if(!cache){await brandPromise;document.body.classList.remove('loading')}else brandPromise.catch(()=>{});
+    if(!cache){document.body.classList.remove('loading');brandPromise.catch(()=>{});}else brandPromise.catch(()=>{});
     await renderPromise;
   }
   catch(e){if(e.status===401||e.message==='AUTH_REQUIRED'){await sb.auth.signOut();location.replace('https://portal.screenings4u.com/');return}document.body.className='login-page';document.body.innerHTML=`<main class="login-card"><img class="login-logo" src="/assets/img/logo.png"><h1>Portal unavailable</h1><p>${esc(e.message||String(e))}</p><a class="btn primary" href="https://portal.screenings4u.com/selector.html">Return to login</a></main>`}
