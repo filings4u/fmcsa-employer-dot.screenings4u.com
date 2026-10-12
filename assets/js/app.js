@@ -57,7 +57,7 @@ function shell(ctx){
  ['testing','Testing','◆'],['results','Results','✓'],['compliance','FMCSA Compliance','◇'],
  ['documents','Documents','▤'],['reports','Reports','▥'],['notifications','Notifications','✉'],
  ['order-services','Order Services','＋'],['billing','Billing','$'],['branding','Branding','◐'],
- ['locations','Locations','⌖'],['users-roles','Users & Roles','♙'],['support','Support','?']
+ ['consents','Consents','☑'],['team','Team & Roles','♙'],['post-accident','Post-Accident','◆'],['support','Support','?']
  ].map(([id,label,icon])=>({id,label,icon,href:'/'+id+'.html'}));
  const planLabel=C.label;
  const links=NAV.map(x=>`<a href="${esc(x.href||('/'+x.id+'.html'))}" class="${norm(current)===norm(x.id)?'active':''}"><span class="ico">${esc(x.icon||'•')}</span><span>${esc(x.label||pretty(x.id))}</span></a>`).join('');
