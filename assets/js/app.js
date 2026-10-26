@@ -385,7 +385,7 @@ async function init(){
     saveMid(ctx.membership?.id);window.portalCtx=ctx;
     const cache=readBrandCache(ctx.membership?.id);if(cache?.branding)primeBranding(cache.branding);
     shell(ctx);
-    if(cache){if(cache.branding)applyBranding(cache.branding,ctx);else applyPlatformBranding(ctx);setBrandLogo(cache.'/images/logo.png',cache.branding?.portal_name||ctx?.subscription?.plan_name||C.label);document.body.classList.remove('loading')}
+    if(cache){if(cache.branding)applyBranding(cache.branding,ctx);else applyPlatformBranding(ctx);setBrandLogo(cache?.branding?.logo_url||'/images/logo.png',cache.branding?.portal_name||ctx?.subscription?.plan_name||C.label);document.body.classList.remove('loading')}
     const renderPromise=render(ctx);
     const brandPromise=loadBranding(ctx,startingMid===ctx.membership?.id?prefetchedBrand:null);
     if(!cache){document.body.classList.remove('loading');brandPromise.catch(()=>{});}else brandPromise.catch(()=>{});
