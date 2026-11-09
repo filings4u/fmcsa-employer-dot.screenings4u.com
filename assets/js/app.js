@@ -59,6 +59,7 @@ function shell(ctx){
  ['order-services','Order Services','＋'],['billing','Billing','$'],['branding','Branding','◐'],
  ['consents','Consents','☑'],['team','Team & Roles','♙'],['post-accident','Post-Accident','◆'],['support','Support','?']
  ].map(([id,label,icon])=>({id,label,icon,href:'/'+id+'.html'}));
+ if(!NAV.some(x=>x.id==='legal-documents'))NAV.push({id:'legal-documents',label:'Signed Legal Documents',icon:'▤',href:'/legal-documents.html'});
  const planLabel=C.label;
  const links=NAV.map(x=>`<a href="${esc(x.href||('/'+x.id+'.html'))}" class="${norm(current)===norm(x.id)?'active':''}"><span class="ico">${esc(x.icon||'•')}</span><span>${esc(x.label||pretty(x.id))}</span></a>`).join('');
  document.title=`${cfgPage(current).label} | ${C.label}`;
